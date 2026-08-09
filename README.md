@@ -21,6 +21,17 @@ Total compounded return: 48.42%
 
 The report gives each check an explicit `PASS`, `INFO`, `WARN`, or `FAIL`; it does not hide the results behind a combined score. The files in [`examples/`](examples) are synthetic and are not records of real investment performance.
 
+## Real-world demonstration
+
+[![Real U.S. market return audit: logarithmic growth of $1 and drawdown](docs/assets/real-market-audit.png)](notebooks/real_market_returns_audit.ipynb)
+
+The executed [real-market audit notebook](notebooks/real_market_returns_audit.ipynb) downloads the monthly U.S. market factors directly from the official [Kenneth French Data Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html), reconstructs the market return as `Mkt-RF + RF`, and passes the resulting decimal return series through the package's public audit interface. The notebook records retrieval provenance and a content hash, visualizes growth and drawdown, tests best-month dependence, and demonstrates detection with a deliberately corrupted temporary copy; no raw external dataset is committed.
+
+```bash
+python -m pip install -e ".[notebook]"
+python -m nbconvert --to notebook --execute --inplace notebooks/real_market_returns_audit.ipynb
+```
+
 ## Installation
 
 Python 3.12 or later is required. From a checkout:

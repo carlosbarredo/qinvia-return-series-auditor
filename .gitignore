@@ -6,6 +6,7 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .venv/
+.ipynb_checkpoints/
 venv/
 build/
 dist/

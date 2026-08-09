@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "return-series-auditor"
-version = "1.0.0"
+version = "1.1.0"
 description = "Audit investment return series and equity curves for data-quality and statistical fragility."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -23,6 +23,14 @@ classifiers = [
   "Topic :: Office/Business :: Financial :: Investment",
 ]
 dependencies = []
+
+[project.optional-dependencies]
+notebook = [
+  "ipykernel",
+  "matplotlib",
+  "nbconvert",
+  "pandas",
+]
 
 [project.scripts]
 return-audit = "return_series_auditor.cli:main"
