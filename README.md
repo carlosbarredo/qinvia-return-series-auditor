@@ -123,7 +123,9 @@ For CI, use `--strict` when statistical warnings should block a build and JSON w
 return-audit data.csv --strict --format json > audit.json
 ```
 
-The repository workflow installs the package and runs the complete `unittest` suite on Python 3.12, 3.13, and 3.14.
+The repository workflow installs the package and runs the complete `unittest` suite on Python 3.12,
+3.13, and 3.14 once for each pull request. Its cost and governance controls are documented in
+[docs/GITHUB_ACTIONS_COST_CONTROL.md](docs/GITHUB_ACTIONS_COST_CONTROL.md).
 
 ## Methodology, assumptions, and limitations
 
