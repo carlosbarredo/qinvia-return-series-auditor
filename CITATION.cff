@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use Return Series Auditor in research, please cite it using this metadata."
+title: "Return Series Auditor"
+type: software
+authors:
+  - family-names: "Barredo Lago"
+    given-names: "Carlos"
+version: 1.1.0
+date-released: 2026-08-16
+repository-code: "https://github.com/carlosbarredo/return-series-auditor"
+url: "https://github.com/carlosbarredo/return-series-auditor"
+license: MIT
+abstract: >-
+  A dependency-free Python command-line tool for detecting data-quality defects
+  and statistical fragility in dated investment returns and equity curves.

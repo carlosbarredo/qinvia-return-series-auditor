@@ -9,6 +9,14 @@ description = "Audit investment return series and equity curves for data-quality
 readme = "README.md"
 requires-python = ">=3.12"
 license = { file = "LICENSE" }
+keywords = [
+  "finance",
+  "investment",
+  "returns",
+  "risk-metrics",
+  "data-quality",
+  "command-line-tool",
+]
 authors = [
   { name = "Carlos Barredo Lago" }
 ]
@@ -24,6 +32,11 @@ classifiers = [
 ]
 dependencies = []
 
+[project.urls]
+Homepage = "https://github.com/carlosbarredo/return-series-auditor"
+Repository = "https://github.com/carlosbarredo/return-series-auditor.git"
+Issues = "https://github.com/carlosbarredo/return-series-auditor/issues"
+
 [project.optional-dependencies]
 notebook = [
   "ipykernel",
@@ -31,9 +44,19 @@ notebook = [
   "nbconvert",
   "pandas",
 ]
+dev = [
+  "ruff>=0.9,<1",
+]
 
 [project.scripts]
 return-audit = "return_series_auditor.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

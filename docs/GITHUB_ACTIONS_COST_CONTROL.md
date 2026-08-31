@@ -10,6 +10,10 @@ The complete Python 3.12, 3.13, and 3.14 compatibility matrix runs once for pull
 protected `main`. An explicit manual dispatch is retained for recovery and governance verification.
 Branch pushes and the post-merge push do not start duplicate matrix runs.
 
+One separate five-minute lint job checks `src/` and `tests/` with Ruff once per workflow run. Keeping
+lint outside the compatibility matrix avoids repeating the same version-independent check three
+times.
+
 Each pull-request update supersedes and cancels obsolete in-progress jobs. A ten-minute timeout per
 job bounds accidental runner consumption. Python package downloads use the setup cache keyed by
 `pyproject.toml`.
@@ -20,9 +24,9 @@ if repository visibility or billing conditions change.
 
 ## Quality boundary
 
-All three supported Python versions remain required. GAO-1 does not narrow compatibility coverage,
-change financial calculations, execute the real-market notebook, download market data, or publish a
-package or release.
+All three supported Python versions and the lint job remain required. GAO-1 does not narrow
+compatibility coverage, change financial calculations, execute the real-market notebook, download
+market data, or publish a package or release.
 
 ## Supply-chain boundary
 
