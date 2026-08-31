@@ -1,6 +1,5 @@
 # Qinvia Return Series Auditor
 
-[![Tests](https://github.com/carlosbarredo/qinvia-return-series-auditor/actions/workflows/tests.yml/badge.svg)](https://github.com/carlosbarredo/qinvia-return-series-auditor/actions/workflows/tests.yml)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -22,7 +21,7 @@ Maximum drawdown: -1.80%
 ...
 ```
 
-It is designed for researchers, reviewers, and CI pipelines that need an inspectable answer to three questions:
+It is designed for researchers, reviewers, and reproducible local workflows that need an inspectable answer to three questions:
 
 - **Is the input structurally sound?** Missing values, duplicates, bad ordering, impossible returns, invalid equity, and suspicious gaps are surfaced with row- or date-level context.
 - **How does the track record behave?** Compounded return, CAGR, volatility, Sharpe, Sortino, drawdown, recovery, and best/worst periods are calculated consistently.
@@ -116,7 +115,7 @@ Warnings and failures include the observed count, rows, dates, threshold, or cal
 
 Daily, weekly, and monthly data use annualization factors of 252, 52, and 12. `--periods-per-year` overrides the factor but not the reported inferred frequency. Ratios are unavailable when their denominator is effectively zero.
 
-## Exit codes and CI use
+## Exit codes and automated use
 
 | Code | Meaning |
 |---:|---|
@@ -124,13 +123,13 @@ Daily, weekly, and monthly data use annualization factors of 252, 52, and 12. `-
 | `1` | One or more failures were found. With `--strict`, warnings also produce this code. |
 | `2` | Invalid command usage, unreadable input, or an unsupported CSV header. |
 
-For a pipeline that treats statistical warnings as blocking and preserves a machine-readable artifact:
+For a local or occasional external pipeline that treats statistical warnings as blocking and preserves a machine-readable artifact:
 
 ```bash
 return-audit data.csv --strict --format json > audit.json
 ```
 
-The repository workflow lints the code and runs the complete `unittest` suite on Python 3.12, 3.13, and 3.14 for every pull request. Its cost and governance controls are documented in [docs/GITHUB_ACTIONS_COST_CONTROL.md](docs/GITHUB_ACTIONS_COST_CONTROL.md).
+GitHub Actions is intentionally disabled by default: this repository is primarily a public distribution and archival surface. Maintainers run Ruff and the complete `unittest` suite locally; the checked-in workflow is retained only for explicitly approved, one-off remote verification. The policy is documented in [docs/GITHUB_ACTIONS_COST_CONTROL.md](docs/GITHUB_ACTIONS_COST_CONTROL.md).
 
 ## Scope and limitations
 
@@ -151,3 +150,4 @@ python -m unittest discover -s tests -v
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the change checklist, [SECURITY.md](SECURITY.md) for responsible vulnerability reporting, and [CITATION.cff](CITATION.cff) for citation metadata.
 
 Created by **Carlos Barredo Lago** and released under the [MIT License](LICENSE).
+
