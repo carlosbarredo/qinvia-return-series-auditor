@@ -1,14 +1,19 @@
 # GitHub Actions cost control
 
-Status: **GAO-1 governance applied**
+Status: **disabled by default**
 
 Date: 2026-08-16
 
 ## Execution boundary
 
-The complete Python 3.12, 3.13, and 3.14 compatibility matrix runs once for pull requests targeting
-protected `main`. An explicit manual dispatch is retained for recovery and governance verification.
-Branch pushes and the post-merge push do not start duplicate matrix runs.
+GitHub is used primarily as a public distribution and archival surface. Routine verification runs
+locally; repository-level GitHub Actions remains disabled unless a maintainer explicitly approves a
+one-off remote check.
+
+When remote verification is justified, the complete Python 3.12, 3.13, and 3.14 compatibility
+matrix can run once for a pull request targeting protected `main`, or by explicit manual dispatch.
+Actions should be disabled again immediately after the approved run. Branch pushes and the
+post-merge push do not start duplicate matrix runs.
 
 One separate five-minute lint job checks `src/` and `tests/` with Ruff once per workflow run. Keeping
 lint outside the compatibility matrix avoids repeating the same version-independent check three
@@ -18,15 +23,14 @@ Each pull-request update supersedes and cancels obsolete in-progress jobs. A ten
 job bounds accidental runner consumption. Python package downloads use the setup cache keyed by
 `pyproject.toml`.
 
-The repository is public, so standard GitHub-hosted runner minutes do not currently create a direct
-Actions charge. These controls still reduce unnecessary execution and preserve a zero-cost posture
-if repository visibility or billing conditions change.
+This opt-in boundary avoids incidental runner use and keeps repository operating costs predictable.
 
 ## Quality boundary
 
-All three supported Python versions and the lint job remain required. GAO-1 does not narrow
-compatibility coverage, change financial calculations, execute the real-market notebook, download
-market data, or publish a package or release.
+Local validation uses Ruff and the complete `unittest` suite. If a remote run is explicitly enabled,
+all three supported Python versions and the lint job remain required. The workflow does not change
+financial calculations, execute the real-market notebook, download market data, or publish a
+package or release.
 
 ## Supply-chain boundary
 
@@ -43,9 +47,9 @@ step.
 
 ## Repository governance
 
-Changes to `main` require a pull request, all three Python matrix checks, current-branch validation,
-resolved conversations, and linear history. Administrators are subject to the same controls;
-force pushes and branch deletion are blocked.
+Changes to `main` use a pull request and linear history. When required status checks are enforced,
+Actions must be enabled only for the bounded verification window and disabled again after merge.
+Force pushes and branch deletion remain blocked.
 
 Repository Actions policy admits only the two reviewed official Actions at the commits above.
 
@@ -54,3 +58,4 @@ Repository Actions policy admits only the two reviewed official Actions at the c
 Restore a branch-push trigger only if validation is explicitly required before a pull request
 exists. Revert Action pins only to another reviewed immutable commit, never to a mutable tag. Keep
 the complete supported-Python matrix unless the package compatibility contract changes separately.
+
