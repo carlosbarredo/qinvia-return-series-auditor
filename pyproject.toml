@@ -33,9 +33,9 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/carlosbarredo/return-series-auditor"
-Repository = "https://github.com/carlosbarredo/return-series-auditor.git"
-Issues = "https://github.com/carlosbarredo/return-series-auditor/issues"
+Homepage = "https://github.com/carlosbarredo/qinvia-return-series-auditor"
+Repository = "https://github.com/carlosbarredo/qinvia-return-series-auditor.git"
+Issues = "https://github.com/carlosbarredo/qinvia-return-series-auditor/issues"
 
 [project.optional-dependencies]
 notebook = [

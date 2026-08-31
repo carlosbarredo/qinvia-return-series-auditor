@@ -1,6 +1,6 @@
-# Return Series Auditor
+# Qinvia Return Series Auditor
 
-[![Tests](https://github.com/carlosbarredo/return-series-auditor/actions/workflows/tests.yml/badge.svg)](https://github.com/carlosbarredo/return-series-auditor/actions/workflows/tests.yml)
+[![Tests](https://github.com/carlosbarredo/qinvia-return-series-auditor/actions/workflows/tests.yml/badge.svg)](https://github.com/carlosbarredo/qinvia-return-series-auditor/actions/workflows/tests.yml)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -33,8 +33,8 @@ It is designed for researchers, reviewers, and CI pipelines that need an inspect
 Python 3.12 or later is required. The package has no third-party runtime dependencies.
 
 ```bash
-git clone https://github.com/carlosbarredo/return-series-auditor.git
-cd return-series-auditor
+git clone https://github.com/carlosbarredo/qinvia-return-series-auditor.git
+cd qinvia-return-series-auditor
 python -m pip install -e .
 return-audit examples/clean_returns.csv
 ```
